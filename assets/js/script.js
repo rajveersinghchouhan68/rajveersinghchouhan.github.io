@@ -111,7 +111,10 @@ function resizeCanvas() {
 
 function initParticles() {
   particles = [];
-  const count = Math.min(Math.floor(window.innerWidth / 12), 100);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const divisor = isMobile ? 20 : 12;
+  const maxCount = isMobile ? 45 : 100;
+  const count = Math.min(Math.floor(window.innerWidth / divisor), maxCount);
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * canvas.width,
@@ -258,13 +261,38 @@ window.addEventListener('scroll', () => {
 /* ===== MOBILE NAV ===== */
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
+const navBackdrop = document.getElementById('nav-backdrop');
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+function setNavOpen(isOpen) {
+  navLinks.classList.toggle('open', isOpen);
+  navToggle.classList.toggle('active', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  document.body.classList.toggle('nav-open', isOpen);
+  if (navBackdrop) {
+    navBackdrop.classList.toggle('visible', isOpen);
+    navBackdrop.setAttribute('aria-hidden', String(!isOpen));
+  }
+}
 
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  setNavOpen(!navLinks.classList.contains('open'));
 });
 
 navLinks.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+  link.addEventListener('click', () => setNavOpen(false));
+});
+
+if (navBackdrop) {
+  navBackdrop.addEventListener('click', () => setNavOpen(false));
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setNavOpen(false);
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) setNavOpen(false);
 });
 
 /* ===== COUNTER ANIMATION ===== */
@@ -299,46 +327,52 @@ document.querySelectorAll('.skill-tag').forEach((tag) => {
   const level = tag.dataset.level || 80;
   tag.style.setProperty('--level', level);
 
-  tag.addEventListener('mouseenter', () => {
-    tag.style.transform = 'translateY(-4px) scale(1.05)';
-  });
-  tag.addEventListener('mouseleave', () => {
-    tag.style.transform = '';
-  });
+  if (!isTouchDevice) {
+    tag.addEventListener('mouseenter', () => {
+      tag.style.transform = 'translateY(-4px) scale(1.05)';
+    });
+    tag.addEventListener('mouseleave', () => {
+      tag.style.transform = '';
+    });
+  }
 });
 
 /* ===== 3D TILT CARDS ===== */
-document.querySelectorAll('.tilt-card').forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -6;
-    const rotateY = ((x - centerX) / centerX) * 6;
+if (!isTouchDevice) {
+  document.querySelectorAll('.tilt-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
 
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-  });
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
   });
-});
+}
 
 /* ===== MAGNETIC BUTTONS ===== */
-document.querySelectorAll('.magnetic').forEach((btn) => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-  });
+if (!isTouchDevice) {
+  document.querySelectorAll('.magnetic').forEach((btn) => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
 
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
   });
-});
+}
 
 /* ===== SMOOTH ACTIVE NAV ===== */
 const sections = document.querySelectorAll('section[id]');

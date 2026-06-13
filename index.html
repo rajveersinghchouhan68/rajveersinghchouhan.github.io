@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="RSC Portfolio" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="description" content="Rajveer Singh Chouhan — Senior Data Engineer specializing in Databricks, ETL pipelines, and cloud-native analytics." />
   <meta name="theme-color" content="#06080f" />
   <meta property="og:title" content="Rajveer Singh Chouhan | Data Engineer" />
@@ -25,9 +28,10 @@
     <a href="#hero" class="nav-logo">
       <span class="logo-bracket">&lt;</span>RSC<span class="logo-bracket">/&gt;</span>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
