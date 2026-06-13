@@ -105,7 +105,7 @@ let particles = [];
 let animFrame;
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
+  canvas.width = document.documentElement.clientWidth;
   canvas.height = window.innerHeight;
 }
 
