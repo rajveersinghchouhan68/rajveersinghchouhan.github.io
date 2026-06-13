@@ -24,6 +24,8 @@ html {
   scroll-padding-top: var(--nav-h);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -31,7 +33,8 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
   cursor: none;
 }
 
@@ -46,8 +49,14 @@ img { max-width: 100%; display: block; }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+main {
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 /* ===== CURSOR GLOW ===== */
@@ -234,6 +243,8 @@ a, button {
   position: relative;
   z-index: 1;
   padding: 100px 0;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .section-header {
@@ -283,12 +294,15 @@ a, button {
   padding: calc(var(--nav-h) + 40px) 32px 80px;
   position: relative;
   z-index: 1;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .hero-grid {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  min-width: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -491,6 +505,7 @@ a, button {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  max-width: 100%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 212, 170, 0.05);
 }
 
@@ -722,7 +737,9 @@ a, button {
   position: relative;
   width: 320px;
   height: 320px;
+  max-width: 100%;
   margin: 0 auto 60px;
+  overflow: hidden;
 }
 
 .orbit-center {
@@ -1022,6 +1039,15 @@ a, button {
   backdrop-filter: blur(10px);
   overflow: hidden;
   transition: border-color 0.3s;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.timeline-card,
+.skill-category,
+.highlight-card {
+  max-width: 100%;
+  min-width: 0;
 }
 
 .project-card::before {
@@ -1290,6 +1316,14 @@ a, button {
   border: 1px solid var(--border);
   border-radius: 24px;
   backdrop-filter: blur(10px);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.contact-content,
+.contact-terminal {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .contact-content h2 {
@@ -1320,6 +1354,12 @@ a, button {
   font-size: 0.9rem;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   cursor: none;
+  max-width: 100%;
+}
+
+.contact-link-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-link:hover {
@@ -1355,6 +1395,10 @@ a, button {
   margin: 0;
   font-size: 0.85rem;
   line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 /* ===== TILT CARD ===== */
@@ -1429,26 +1473,30 @@ a, button {
   .nav-links {
     position: fixed;
     top: calc(var(--nav-h) + env(safe-area-inset-top, 0));
-    left: 0;
     right: 0;
+    left: auto;
+    width: min(300px, 88vw);
     bottom: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
     background: var(--bg-2);
     padding: 16px 16px calc(24px + env(safe-area-inset-bottom, 0));
-    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     transform: translateX(100%);
+    visibility: hidden;
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
     pointer-events: none;
     z-index: 1001;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
   .nav-links.open {
     transform: translateX(0);
+    visibility: visible;
     opacity: 1;
     pointer-events: all;
   }
@@ -1477,9 +1525,17 @@ a, button {
 
   .hero-grid { gap: 32px; }
 
-  .hero-terminal { order: 2; }
+  .hero-terminal {
+    order: 2;
+    min-width: 0;
+    max-width: 100%;
+  }
 
-  .hero-content { order: 1; }
+  .hero-content {
+    order: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
 
   .hero-profile {
     flex-direction: row;
@@ -1499,10 +1555,9 @@ a, button {
 
   .hero-role {
     font-size: clamp(0.85rem, 3.5vw, 1rem);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding-bottom: 4px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .hero-desc {
@@ -1553,17 +1608,22 @@ a, button {
   .about-highlights { grid-template-columns: 1fr; }
 
   .skills-orbit {
-    width: min(280px, 85vw);
-    height: min(280px, 85vw);
+    width: min(280px, 100%);
+    height: min(280px, 72vw);
     margin-bottom: 40px;
+    overflow: hidden;
   }
 
-  .ring-1 { --radius: 90px; }
-  .ring-2 { --radius: 110px; }
+  .ring-1 { --radius: 72px; }
+  .ring-2 { --radius: 92px; }
 
   .orbit-item {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     padding: 4px 8px;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .skills-grid { gap: 16px; }
@@ -1627,18 +1687,33 @@ a, button {
   }
 
   .contact-link-text {
-    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     font-size: 0.85rem;
   }
 
+  .contact-terminal .terminal {
+    max-width: 100%;
+  }
+
   .terminal.mini .terminal-body pre {
-    font-size: 0.72rem;
-    overflow-x: auto;
+    font-size: 0.68rem;
+    overflow-x: hidden;
   }
 
   .footer {
     padding: 32px 16px calc(32px + env(safe-area-inset-bottom, 0));
     text-align: center;
+  }
+
+  body {
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
+  }
+
+  .nav-backdrop {
+    left: 0;
+    right: 0;
   }
 }
 
