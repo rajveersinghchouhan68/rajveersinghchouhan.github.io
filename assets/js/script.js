@@ -3,7 +3,6 @@
   const cfg = window.PORTFOLIO_CONFIG || {};
   const emailLink = document.getElementById('link-email');
   const linkedinLink = document.getElementById('link-linkedin');
-  const githubLink = document.getElementById('link-github');
   const locationEl = document.getElementById('contact-location');
   const jsonEl = document.getElementById('contact-json');
 
@@ -14,10 +13,6 @@
 
   if (cfg.linkedin && linkedinLink) {
     linkedinLink.href = cfg.linkedin;
-  }
-
-  if (cfg.github && githubLink) {
-    githubLink.href = cfg.github;
   }
 
   const profilePhoto = document.getElementById('profile-photo');
@@ -79,90 +74,6 @@
       '  <span class="t-key">"status"</span>: <span class="t-str">"ready_to_connect"</span>',
     ];
     jsonEl.innerHTML = '{\n' + lines.join('\n') + '\n}';
-  }
-})();
-
-/* ===== GITHUB REPOS ===== */
-(async function loadGitHubRepos() {
-  const cfg = window.PORTFOLIO_CONFIG || {};
-  const username = cfg.githubUsername || 'rajveersinghchouhan';
-  const reposEl = document.getElementById('github-repos');
-  const avatarEl = document.getElementById('github-avatar');
-  const usernameEl = document.getElementById('github-username');
-  const profileLink = document.getElementById('github-profile-link');
-
-  if (usernameEl) usernameEl.textContent = `@${username}`;
-  if (profileLink && cfg.github) profileLink.href = cfg.github;
-
-  if (!reposEl) return;
-
-  try {
-    const [userRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${username}`),
-      fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`),
-    ]);
-
-    if (userRes.ok) {
-      const user = await userRes.json();
-      if (avatarEl && user.avatar_url) {
-        avatarEl.innerHTML = `<img src="${user.avatar_url}" alt="${username} on GitHub" />`;
-      }
-    }
-
-    if (!reposRes.ok) throw new Error('Failed to load repos');
-
-    const repos = await reposRes.json();
-    const publicRepos = repos.filter((repo) => !repo.fork);
-
-    if (publicRepos.length === 0) {
-      reposEl.innerHTML = `
-        <div class="github-empty">
-          No public repositories yet.
-          <br /><br />
-          <a href="${cfg.github || `https://github.com/${username}`}" target="_blank" rel="noopener noreferrer">
-            View @${username} on GitHub ↗
-          </a>
-        </div>`;
-      return;
-    }
-
-    reposEl.innerHTML = publicRepos
-      .map(
-        (repo) => `
-        <a href="${repo.html_url}" class="repo-card tilt-card" target="_blank" rel="noopener noreferrer">
-          <h4>📁 ${repo.name}</h4>
-          <p>${repo.description || 'No description provided.'}</p>
-          <div class="repo-meta">
-            ${repo.language ? `<span class="repo-lang">● ${repo.language}</span>` : ''}
-            <span>★ ${repo.stargazers_count}</span>
-            <span>Updated ${new Date(repo.updated_at).toLocaleDateString()}</span>
-          </div>
-        </a>`
-      )
-      .join('');
-
-    document.querySelectorAll('#github-repos .tilt-card').forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -6;
-        const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 6;
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  } catch {
-    reposEl.innerHTML = `
-      <div class="github-empty">
-        Could not load repositories right now.
-        <br /><br />
-        <a href="${cfg.github || `https://github.com/${username}`}" target="_blank" rel="noopener noreferrer">
-          Open GitHub profile ↗
-        </a>
-      </div>`;
   }
 })();
 
