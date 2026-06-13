@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rajveer Singh Chouhan — Senior Data Engineer specializing in Databricks, ETL pipelines, and cloud-native analytics." />
+  <title>Rajveer Singh Chouhan | Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>RSC<span class="logo-bracket">/&gt;</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#contact" class="nav-cta">Connect</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-profile">
+            <div class="profile-frame">
+              <img
+                id="profile-photo"
+                src="images/Media.jpeg"
+                alt="Rajveer Singh Chouhan"
+                width="160"
+                height="160"
+                loading="eager"
+              />
+              <div class="profile-ring" aria-hidden="true"></div>
+              <div class="profile-fallback" id="profile-fallback" aria-hidden="true">RSC</div>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/rajveer-singh-chouhan-1264b7164"
+              class="profile-link"
+              id="profile-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn profile ↗
+            </a>
+          </div>
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            Available for opportunities
+          </div>
+          <h1 class="hero-title">
+            <span class="hero-greeting">Hi, I'm</span>
+            <span class="hero-name">Rajveer Singh Chouhan</span>
+          </h1>
+          <div class="hero-role">
+            <span class="role-prefix">$ role --set</span>
+            <span id="typed-role" class="typed-text"></span>
+            <span class="typed-cursor">|</span>
+          </div>
+          <p class="hero-desc">
+            Proactive Backend &amp; Data Engineer with <strong>4.5+ years</strong> building scalable pipelines,
+            cloud-native analytics, and automated deployments at enterprise scale.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary magnetic">View Projects</a>
+            <a href="#skills" class="btn btn-ghost magnetic">Explore Skills</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num" data-target="4.5">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="30">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Latency Reduced</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="10">0</span><span class="stat-suffix">GB+</span>
+              <span class="stat-label">Data Processed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="40">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Ops Automated</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-terminal reveal delay-1">
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">pipeline_deploy.sh</span>
+            </div>
+            <div class="terminal-body" id="terminal-output">
+              <div class="terminal-line"><span class="t-green">➜</span> <span class="t-dim">~/kadel-labs</span> databricks bundle deploy -t prod</div>
+              <div class="terminal-line"><span class="t-blue">ℹ</span> Validating DAB configuration...</div>
+              <div class="terminal-line"><span class="t-blue">ℹ</span> GitHub Actions: awaiting production approval</div>
+              <div class="terminal-line"><span class="t-green">✓</span> Service principal authenticated</div>
+              <div class="terminal-line"><span class="t-green">✓</span> Unity Catalog: external locations synced</div>
+              <div class="terminal-line"><span class="t-yellow">→</span> Running ETL: landing → bronze → silver</div>
+              <div class="terminal-line"><span class="t-green">✓</span> Pipeline deployed successfully <span class="t-dim">(latency -30%)</span></div>
+              <div class="terminal-line typing-line"><span class="t-green">➜</span> <span id="terminal-cursor-line"></span><span class="typed-cursor blink">_</span></div>
+            </div>
+          </div>
+
+          <div class="pipeline-viz">
+            <div class="pipeline-node" data-layer="landing">
+              <div class="node-icon">📥</div>
+              <span>Landing</span>
+            </div>
+            <div class="pipeline-flow"><div class="flow-particle"></div></div>
+            <div class="pipeline-node" data-layer="bronze">
+              <div class="node-icon">🥉</div>
+              <span>Bronze</span>
+            </div>
+            <div class="pipeline-flow"><div class="flow-particle delay"></div></div>
+            <div class="pipeline-node" data-layer="silver">
+              <div class="node-icon">🥈</div>
+              <span>Silver</span>
+            </div>
+            <div class="pipeline-flow"><div class="flow-particle delay-2"></div></div>
+            <div class="pipeline-node" data-layer="gold">
+              <div class="node-icon">📊</div>
+              <span>BI / Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">01 — About</span>
+          <h2>Engineering data at scale</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Proactive and technically-driven Backend &amp; Data Engineer with hands-on experience in
+              scalable system design, ETL pipeline orchestration, and cloud-native analytics — primarily
+              at <strong>Kadel Labs</strong>.
+            </p>
+            <p>
+              I architect and automate backend workflows using <strong>PHP (Laravel)</strong>, <strong>Python</strong>,
+              and <strong>Databricks</strong>, optimizing throughput and reducing operational bottlenecks.
+            </p>
+            <p>
+              Passionate about robust data-driven solutions, code quality, performance optimization,
+              and reusable engineering practices across enterprise modernization initiatives.
+            </p>
+          </div>
+          <div class="about-highlights reveal delay-1">
+            <div class="highlight-card">
+              <div class="highlight-icon">⚡</div>
+              <h3>Performance</h3>
+              <p>Cut platform latency by 30% and manual deployment effort by 40%</p>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🔄</div>
+              <h3>Automation</h3>
+              <p>GitHub Actions + Databricks Bundles with approval-gated prod releases</p>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">📈</div>
+              <h3>Analytics</h3>
+              <p>10GB+ datasets ingested &amp; modeled for real-time BI dashboards</p>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🛡️</div>
+              <h3>Security</h3>
+              <p>Service principals, Key Vault, Unity Catalog governance patterns</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">02 — Skills</span>
+          <h2>Tech stack &amp; tooling</h2>
+        </div>
+
+        <div class="skills-orbit reveal">
+          <div class="orbit-center">
+            <span>Core</span>
+            <strong>Stack</strong>
+          </div>
+          <div class="orbit-ring ring-1">
+            <div class="orbit-item" style="--i:0">Python</div>
+            <div class="orbit-item" style="--i:1">PySpark</div>
+            <div class="orbit-item" style="--i:2">SQL</div>
+            <div class="orbit-item" style="--i:3">PHP</div>
+          </div>
+          <div class="orbit-ring ring-2">
+            <div class="orbit-item" style="--i:0">Databricks</div>
+            <div class="orbit-item" style="--i:1">Azure</div>
+            <div class="orbit-item" style="--i:2">GitHub Actions</div>
+            <div class="orbit-item" style="--i:3">Laravel</div>
+            <div class="orbit-item" style="--i:4">MySQL</div>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-category reveal">
+            <h3>Data Engineering</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="95">Databricks</span>
+              <span class="skill-tag" data-level="90">Delta Lake</span>
+              <span class="skill-tag" data-level="90">PySpark</span>
+              <span class="skill-tag" data-level="88">Spark</span>
+              <span class="skill-tag" data-level="92">ETL/ELT</span>
+              <span class="skill-tag" data-level="85">DAB's</span>
+              <span class="skill-tag" data-level="88">Unity Catalog</span>
+            </div>
+          </div>
+          <div class="skill-category reveal delay-1">
+            <h3>Cloud &amp; DevOps</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="90">Azure</span>
+              <span class="skill-tag" data-level="88">ADLS</span>
+              <span class="skill-tag" data-level="85">Key Vault</span>
+              <span class="skill-tag" data-level="92">GitHub Actions</span>
+              <span class="skill-tag" data-level="90">CI/CD</span>
+              <span class="skill-tag" data-level="88">Git</span>
+            </div>
+          </div>
+          <div class="skill-category reveal delay-2">
+            <h3>Backend &amp; Integration</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="88">PHP Laravel</span>
+              <span class="skill-tag" data-level="90">REST APIs</span>
+              <span class="skill-tag" data-level="85">MySQL</span>
+              <span class="skill-tag" data-level="80">JavaScript</span>
+              <span class="skill-tag" data-level="82">Bitrix CRM</span>
+              <span class="skill-tag" data-level="78">Qlik</span>
+            </div>
+          </div>
+          <div class="skill-category reveal delay-3">
+            <h3>Concepts</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="92">Data Modeling</span>
+              <span class="skill-tag" data-level="88">Modular Architecture</span>
+              <span class="skill-tag" data-level="85">Agile SCRUM</span>
+              <span class="skill-tag" data-level="90">Performance Tuning</span>
+              <span class="skill-tag" data-level="87">Security Modules</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certifications reveal">
+          <h3>Certifications</h3>
+          <div class="cert-badges">
+            <a href="#" class="cert-badge" id="cert-associate" target="_blank" rel="noopener noreferrer">
+              <div class="cert-icon">🏅</div>
+              <div>
+                <strong>Databricks Certified</strong>
+                <span>Data Engineer Associate</span>
+                <em class="cert-verify">Verify credential ↗</em>
+              </div>
+            </a>
+            <a href="#" class="cert-badge" id="cert-professional" target="_blank" rel="noopener noreferrer">
+              <div class="cert-icon">🏆</div>
+              <div>
+                <strong>Databricks Certified</strong>
+                <span>Data Engineer Professional</span>
+                <em class="cert-verify">Verify credential ↗</em>
+              </div>
+            </a>
+            <div class="cert-badge cert-badge-static">
+              <div class="cert-icon">📜</div>
+              <div>
+                <strong>NPTEL</strong>
+                <span>Programming in Java (2019)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">03 — Experience</span>
+          <h2>Professional journey</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card tilt-card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Senior Software Engineer</h3>
+                  <span class="company">Kadel Labs</span>
+                </div>
+                <span class="timeline-date">Jan 2025 – Present</span>
+              </div>
+              <ul class="timeline-list">
+                <li>Developed high-throughput backend data infrastructures using Python, Databricks, PHP Laravel, and MySQL</li>
+                <li>Automated Databricks bundle deployments via GitHub Actions with approval-gated production releases</li>
+                <li>Standardized service-principal job execution across multiple pipelines (dev vs prod)</li>
+                <li>Built bronze/silver ingestion pipelines for press release and event/API sources</li>
+                <li>Mentored junior engineers on scalable backend and data pipeline design</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card tilt-card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Software Engineer</h3>
+                  <span class="company">Kadel Labs</span>
+                </div>
+                <span class="timeline-date">Apr 2022 – Jan 2025</span>
+              </div>
+              <ul class="timeline-list">
+                <li>Reduced platform latency by 30% and manual operations by 40% (10+ hrs/week saved)</li>
+                <li>Engineered REST APIs and ETL logic — 40% faster data retrieval times</li>
+                <li>Led Bitrix CRM optimization for multiple clients (25%+ module efficiency)</li>
+                <li>Collaborated on Unity Catalog, Key Vault, and secret scope permissions</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-card tilt-card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Trainee</h3>
+                  <span class="company">Kadel Labs</span>
+                </div>
+                <span class="timeline-date">Dec 2021 – Apr 2022</span>
+              </div>
+              <ul class="timeline-list">
+                <li>Foundation in backend development, data integration, and agile delivery practices</li>
+                <li>Supported CRM enhancements and cross-vertical data consistency initiatives</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">04 — Projects</span>
+          <h2>Major work executed</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card tilt-card reveal">
+            <div class="project-num">01</div>
+            <div class="project-meta">
+              <span class="project-role">Data Engineer</span>
+              <span class="project-size">10GB+</span>
+            </div>
+            <h3>Attrition Analysis HR Data Lakehouse</h3>
+            <p>End-to-end pipeline processing HR datasets for attrition prediction and retention analytics with 25% improved predictive accuracy.</p>
+            <ul class="project-points">
+              <li>PySpark ETL workflows on Databricks</li>
+              <li>Automated ingestion — 10+ hrs/week saved</li>
+              <li>Sigma / PowerBI dashboard-ready outputs</li>
+            </ul>
+            <div class="project-tech">
+              <span>Databricks</span><span>PySpark</span><span>Python</span><span>PowerBI</span>
+            </div>
+          </article>
+
+          <article class="project-card tilt-card reveal delay-1">
+            <div class="project-num">02</div>
+            <div class="project-meta">
+              <span class="project-role">Backend / Data Engineer</span>
+              <span class="project-size">500+ req/day</span>
+            </div>
+            <h3>Internet Advertising Backend Optimization</h3>
+            <p>Scalable RESTful APIs and robust data integration with client-facing systems for an advertising organization.</p>
+            <ul class="project-points">
+              <li>20 REST APIs — 200ms response latency</li>
+              <li>Access control &amp; security modules</li>
+              <li>Automated infra deployments (5+ hrs/week saved)</li>
+            </ul>
+            <div class="project-tech">
+              <span>PHP Laravel</span><span>MySQL</span><span>JavaScript</span><span>REST</span>
+            </div>
+          </article>
+
+          <article class="project-card tilt-card reveal delay-2">
+            <div class="project-num">03</div>
+            <div class="project-meta">
+              <span class="project-role">Senior Software Engineer</span>
+              <span class="project-size">Multi-repo</span>
+            </div>
+            <h3>Multi-source Databricks Platform</h3>
+            <p>Enterprise Azure lakehouse with multi-source ingestion, Git-driven bundle deployments, and gated production releases.</p>
+            <ul class="project-points">
+              <li>Landing → bronze → silver medallion architecture</li>
+              <li>GitHub Actions CI/CD for DAB's across repos</li>
+              <li>Service principals + Unity Catalog governance</li>
+            </ul>
+            <div class="project-tech">
+              <span>Azure Databricks</span><span>GitHub Actions</span><span>Unity Catalog</span><span>Spark</span>
+            </div>
+          </article>
+
+          <article class="project-card tilt-card reveal delay-3">
+            <div class="project-num">04</div>
+            <div class="project-meta">
+              <span class="project-role">Data Engineer / Backend</span>
+              <span class="project-size">3 clients</span>
+            </div>
+            <h3>Bitrix CRM Optimization &amp; Automation</h3>
+            <p>Upgraded and optimized Bitrix CRM modules for enterprise clients with Qlik reporting and cross-client compatibility.</p>
+            <ul class="project-points">
+              <li>25% operational performance improvement</li>
+              <li>40% reduction in manual deployment effort</li>
+              <li>Qlik reports, queries &amp; dashboards</li>
+            </ul>
+            <div class="project-tech">
+              <span>Bitrix</span><span>PHP</span><span>MySQL</span><span>Qlik</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section education">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">05 — Education</span>
+          <h2>Academic background</h2>
+        </div>
+
+        <div class="edu-grid">
+          <div class="edu-card tilt-card reveal">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <h3>B.Tech in Computer Science</h3>
+              <p class="edu-school">Geetanjali Institute of Technical Studies, Udaipur</p>
+              <span class="edu-year">2017 – 2021</span>
+            </div>
+          </div>
+          <div class="edu-card tilt-card reveal delay-1">
+            <div class="edu-icon">📚</div>
+            <div>
+              <h3>Higher Secondary (XII)</h3>
+              <p class="edu-school">Shreenath Senior Secondary School, Dungarpur</p>
+              <span class="edu-year">2016 – 2017</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB -->
+    <section id="github" class="section github">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">06 — GitHub</span>
+          <h2>Open source &amp; code</h2>
+        </div>
+
+        <div class="github-header reveal">
+          <div class="github-profile-card tilt-card">
+            <div class="github-avatar" id="github-avatar">RSC</div>
+            <div>
+              <h3 id="github-username">@rajveersinghchouhan</h3>
+              <p>Public repositories and project work on GitHub.</p>
+              <a href="https://github.com/rajveersinghchouhan" id="github-profile-link" class="btn btn-ghost magnetic" target="_blank" rel="noopener noreferrer">
+                View GitHub Profile ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="github-repos reveal" id="github-repos">
+          <div class="github-loading">Loading repositories...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div class="contact-content">
+            <span class="section-tag">07 — Connect</span>
+            <h2>Let's build something scalable</h2>
+            <p>Open to data engineering roles, backend architecture, and cloud-native analytics opportunities.</p>
+            <div class="contact-links" id="contact-links">
+              <a href="#" class="contact-link magnetic" id="link-email" target="_blank" rel="noopener">
+                <span class="contact-link-icon">✉</span>
+                <span class="contact-link-text">Email</span>
+              </a>
+              <a href="#" class="contact-link magnetic" id="link-linkedin" target="_blank" rel="noopener">
+                <span class="contact-link-icon">in</span>
+                <span class="contact-link-text">LinkedIn</span>
+              </a>
+              <a href="#" class="contact-link magnetic" id="link-github" target="_blank" rel="noopener">
+                <span class="contact-link-icon">&lt;/&gt;</span>
+                <span class="contact-link-text">GitHub</span>
+              </a>
+            </div>
+            <p class="contact-location" id="contact-location"></p>
+          </div>
+          <div class="contact-terminal">
+            <div class="terminal mini">
+              <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">contact.json</span>
+              </div>
+              <div class="terminal-body">
+                <pre id="contact-json">{
+  <span class="t-key">"name"</span>: <span class="t-str">"Rajveer Singh Chouhan"</span>,
+  <span class="t-key">"role"</span>: <span class="t-str">"Senior Software Engineer"</span>,
+  <span class="t-key">"company"</span>: <span class="t-str">"Kadel Labs"</span>,
+  <span class="t-key">"focus"</span>: [<span class="t-str">"Databricks"</span>, <span class="t-str">"ETL"</span>, <span class="t-str">"Azure"</span>],
+  <span class="t-key">"status"</span>: <span class="t-str">"ready_to_connect"</span>
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Rajveer Singh Chouhan · Built with data &amp; code</p>
+    <p class="footer-mono">$ echo "Pipeline complete." && exit 0</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
