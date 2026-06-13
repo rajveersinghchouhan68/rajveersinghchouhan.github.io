@@ -5,7 +5,7 @@ window.PORTFOLIO_CONFIG = {
   github: 'https://github.com/rajveersinghchouhan',
   githubUsername: 'rajveersinghchouhan',
   location: 'Udaipur, Rajasthan, India',
-  profileImage: 'images/Media.jpeg',
+  profileImage: 'assets/images/profile.jpg',
   certifications: {
     associate: {
       label: 'Data Engineer Associate',
