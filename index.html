@@ -47,50 +47,80 @@
     <!-- HERO -->
     <section id="hero" class="hero">
       <div class="hero-grid">
-        <div class="hero-content reveal">
-          <div class="hero-profile">
-            <div class="profile-frame">
-              <img
-                id="profile-photo"
-                src="assets/images/profile.jpg"
-                alt="Rajveer Singh Chouhan"
-                width="160"
-                height="160"
-                loading="eager"
-              />
-              <div class="profile-ring" aria-hidden="true"></div>
-              <div class="profile-fallback" id="profile-fallback" aria-hidden="true">RSC</div>
+        <div class="hero-portrait reveal" id="hero-portrait">
+          <div class="portrait-stage" id="portrait-stage">
+            <div class="portal-backdrop" aria-hidden="true">
+              <div class="portal-volumetric portal-volumetric--left"></div>
+              <div class="portal-volumetric portal-volumetric--center"></div>
+              <div class="portal-volumetric portal-volumetric--right"></div>
             </div>
-            <a
-              href="https://www.linkedin.com/in/rajveer-singh-chouhan-1264b7164"
-              class="profile-link"
-              id="profile-linkedin"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn profile ↗
-            </a>
+
+            <div class="portal-ellipse" id="portal-ellipse" aria-hidden="true">
+              <div class="portal-core"></div>
+              <div class="portal-ring portal-ring--outer"></div>
+              <div class="portal-ring portal-ring--mid"></div>
+              <div class="portal-ring portal-ring--inner"></div>
+              <div class="portal-scanlines"></div>
+              <div class="portal-shimmer"></div>
+            </div>
+
+            <div class="portrait-parallax" id="portrait-parallax">
+              <div class="portrait-clip">
+                <img
+                  id="profile-photo"
+                  class="portrait-img"
+                  src="assets/images/profile-transparent.png"
+                  alt="Rajveer Singh Chouhan"
+                  width="283"
+                  height="939"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <canvas class="portal-particles" id="portal-particles" aria-hidden="true"></canvas>
+
+            <div class="portrait-fallback" id="profile-fallback" aria-hidden="true">RSC</div>
+            <ul class="portrait-badges" aria-label="Technical focus areas">
+              <li class="portrait-badge" style="--badge-x: 90%; --badge-y: 10%;">AI</li>
+              <li class="portrait-badge" style="--badge-x: 8%; --badge-y: 22%;">ETL</li>
+              <li class="portrait-badge" style="--badge-x: 92%; --badge-y: 34%;">Spark</li>
+              <li class="portrait-badge" style="--badge-x: 7%; --badge-y: 44%;">Lake</li>
+            </ul>
           </div>
+        </div>
+
+        <div class="hero-content reveal delay-1">
           <div class="hero-badge">
             <span class="pulse-dot"></span>
             Available for opportunities
           </div>
           <h1 class="hero-title">
             <span class="hero-greeting">Hi, I'm</span>
-            <span class="hero-name">Rajveer Singh Chouhan</span>
+            <span class="hero-name-line">
+              <span class="hero-name-first">Rajveer Singh</span>
+              <span class="hero-name-last">Chouhan</span>
+            </span>
           </h1>
           <div class="hero-role">
             <span class="role-prefix">$ role --set</span>
             <span id="typed-role" class="typed-text"></span>
             <span class="typed-cursor">|</span>
           </div>
+          <div class="hero-expertise" aria-label="Core expertise">
+            <span class="expertise-chip">Databricks</span>
+            <span class="expertise-chip">PySpark</span>
+            <span class="expertise-chip">ETL / Lakehouse</span>
+            <span class="expertise-chip">AI-Ready Pipelines</span>
+          </div>
           <p class="hero-desc">
-            Proactive Backend &amp; Data Engineer with <strong>4.5+ years</strong> building scalable pipelines,
-            cloud-native analytics, and automated deployments at enterprise scale.
+            I design <strong>scalable data platforms</strong> and <strong>AI-ready pipelines</strong> —
+            from bronze-to-gold lakehouse models to automated Databricks deployments at enterprise scale.
           </p>
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary magnetic">View Projects</a>
-            <a href="#skills" class="btn btn-ghost magnetic">Explore Skills</a>
+            <a href="#contact" class="btn btn-ghost magnetic">Connect</a>
           </div>
           <div class="hero-stats">
             <div class="stat-item">
@@ -111,8 +141,10 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="hero-terminal reveal delay-1">
+      <div class="hero-showcase reveal delay-2">
+        <div class="hero-terminal">
           <div class="terminal">
             <div class="terminal-header">
               <span class="dot red"></span>
@@ -154,6 +186,12 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="hero-console" aria-hidden="true">
+        <span class="hero-console-prompt">rajveer@portfolio</span>:<span class="hero-console-path">~</span>$
+        <span class="hero-console-cmd">Architecting lakehouse &amp; AI-ready data pipelines</span>
+        <span class="hero-console-cursor">▌</span>
       </div>
 
       <div class="scroll-indicator">
@@ -548,6 +586,7 @@
   </footer>
 
   <script src="assets/js/config.js"></script>
+  <script src="assets/js/hero-portrait.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 </html>

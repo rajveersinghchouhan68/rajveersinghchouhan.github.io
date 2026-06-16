@@ -17,14 +17,9 @@
 
   const profilePhoto = document.getElementById('profile-photo');
   const profileFallback = document.getElementById('profile-fallback');
-  const profileLinkedin = document.getElementById('profile-linkedin');
 
   if (cfg.profileImage && profilePhoto) {
     profilePhoto.src = cfg.profileImage;
-  }
-
-  if (cfg.linkedin && profileLinkedin) {
-    profileLinkedin.href = cfg.linkedin;
   }
 
   if (profilePhoto && profileFallback) {
@@ -173,9 +168,9 @@ window.addEventListener('resize', () => {
 /* ===== TYPED ROLE ===== */
 const roles = [
   'Data Engineer',
-  'Backend Engineer',
   'Databricks Specialist',
-  'ETL Pipeline Architect',
+  'AI-Ready Pipeline Architect',
+  'ETL & Lakehouse Engineer',
   'Cloud Analytics Engineer',
 ];
 const typedEl = document.getElementById('typed-role');

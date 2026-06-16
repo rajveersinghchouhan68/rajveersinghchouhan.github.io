@@ -3,7 +3,7 @@ window.PORTFOLIO_CONFIG = {
   email: 'rajveersinghdpr08@gmail.com',
   linkedin: 'https://www.linkedin.com/in/rajveer-singh-chouhan-1264b7164',
   location: 'Udaipur, Rajasthan, India',
-  profileImage: 'assets/images/profile.jpg',
+  profileImage: 'assets/images/profile-transparent.png',
   certifications: {
     associate: {
       label: 'Data Engineer Associate',
