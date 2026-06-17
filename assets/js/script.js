@@ -61,11 +61,12 @@
   if (jsonEl && cfg.email) {
     const lines = [
       '  <span class="t-key">"name"</span>: <span class="t-str">"Rajveer Singh Chouhan"</span>,',
-      '  <span class="t-key">"role"</span>: <span class="t-str">"Senior Software Engineer"</span>,',
+      '  <span class="t-key">"role"</span>: <span class="t-str">"Data Engineer"</span>,',
+      '  <span class="t-key">"title"</span>: <span class="t-str">"Senior Software Engineer"</span>,',
       '  <span class="t-key">"company"</span>: <span class="t-str">"Kadel Labs"</span>,',
       `  <span class="t-key">"email"</span>: <span class="t-str">"${cfg.email}"</span>,`,
       `  <span class="t-key">"linkedin"</span>: <span class="t-str">"${cfg.linkedin || ''}"</span>,`,
-      '  <span class="t-key">"focus"</span>: [<span class="t-str">"Databricks"</span>, <span class="t-str">"ETL"</span>, <span class="t-str">"Azure"</span>],',
+      '  <span class="t-key">"focus"</span>: [<span class="t-str">"Databricks"</span>, <span class="t-str">"PySpark"</span>, <span class="t-str">"ETL"</span>, <span class="t-str">"Azure"</span>],',
       '  <span class="t-key">"status"</span>: <span class="t-str">"ready_to_connect"</span>',
     ];
     jsonEl.innerHTML = '{\n' + lines.join('\n') + '\n}';
@@ -168,8 +169,8 @@ window.addEventListener('resize', () => {
 /* ===== TYPED ROLE ===== */
 const roles = [
   'Data Engineer',
-  'Databricks Specialist',
-  'AI-Ready Pipeline Architect',
+  'Databricks Lakehouse Engineer',
+  'PySpark ETL Specialist',
   'ETL & Lakehouse Engineer',
   'Cloud Analytics Engineer',
 ];
