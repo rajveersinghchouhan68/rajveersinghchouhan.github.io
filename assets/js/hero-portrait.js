@@ -71,7 +71,7 @@
   function resizePortalCanvas() {
     const rect = stage.getBoundingClientRect();
     w = Math.floor(rect.width);
-    h = Math.floor(rect.height * 0.24);
+    h = Math.floor(rect.height * 0.32);
     canvas.width = w;
     canvas.height = h;
     canvas.style.height = `${h}px`;
@@ -91,7 +91,7 @@
 
   function initPortalParticles() {
     particles = [];
-    const count = Math.min(28, Math.floor(w / 12));
+    const count = Math.min(36, Math.floor(w / 10));
     for (let i = 0; i < count; i++) {
       const p = spawnParticle();
       p.y = h * (0.4 + Math.random() * 0.6);
