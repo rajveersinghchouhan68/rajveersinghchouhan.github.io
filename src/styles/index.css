@@ -1021,13 +1021,27 @@ a, button {
 }
 
 /* ===== SKILLS ===== */
+.section.skills {
+  overflow-x: visible;
+}
+
+.skills-orbit-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px max(20px, 4vw) 44px;
+  margin-bottom: 20px;
+  overflow: visible;
+}
+
 .skills-orbit {
   position: relative;
-  width: 320px;
-  height: 320px;
-  max-width: 100%;
-  margin: 0 auto 60px;
-  overflow: hidden;
+  width: min(460px, calc(100vw - 80px));
+  height: min(460px, calc(100vw - 80px));
+  flex-shrink: 0;
+  margin: 0;
+  overflow: visible;
+  --orbit-half: min(230px, calc((100vw - 80px) / 2));
 }
 
 .orbit-center {
@@ -1084,15 +1098,17 @@ a, button {
   white-space: nowrap;
   backdrop-filter: blur(8px);
   transition: border-color 0.3s, box-shadow 0.3s;
+  z-index: 1;
 }
 
 .orbit-item:hover {
   border-color: var(--accent);
   box-shadow: 0 0 20px rgba(0, 212, 170, 0.2);
+  z-index: 3;
 }
 
-.ring-1 { --count: 4; --radius: 120px; }
-.ring-2 { --count: 5; --radius: 150px; }
+.ring-1 { --count: 4; --radius: min(128px, calc(var(--orbit-half, 230px) - 58px)); }
+.ring-2 { --count: 5; --radius: min(148px, calc(var(--orbit-half, 230px) - 52px)); }
 
 .skills-grid {
   display: grid;
@@ -1987,22 +2003,27 @@ a, button {
 
   .about-highlights { grid-template-columns: 1fr; }
 
-  .skills-orbit {
-    width: min(280px, 100%);
-    height: min(280px, 72vw);
-    margin-bottom: 40px;
-    overflow: hidden;
+  .skills-orbit-wrap {
+    padding: 16px 12px 36px;
+    margin-bottom: 8px;
   }
 
-  .ring-1 { --radius: 72px; }
-  .ring-2 { --radius: 92px; }
+  .skills-orbit {
+    width: min(320px, calc(100vw - 64px));
+    height: min(320px, calc(100vw - 64px));
+    overflow: visible;
+    --orbit-half: min(160px, calc((100vw - 64px) / 2));
+  }
+
+  .ring-1 { --radius: min(72px, calc(var(--orbit-half, 160px) - 52px)); }
+  .ring-2 { --radius: min(88px, calc(var(--orbit-half, 160px) - 48px)); }
 
   .orbit-item {
-    font-size: 0.62rem;
-    padding: 4px 8px;
-    max-width: 110px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.65rem;
+    padding: 5px 10px;
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
     white-space: nowrap;
   }
 
